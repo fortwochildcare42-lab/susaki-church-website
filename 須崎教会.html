@@ -1,0 +1,2479 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>日本キリスト教団 須崎教会 ｜ 教会の扉は、いつでも誰にでも開かれています</title>
+<meta name="description" content="高知県須崎市のプロテスタント教会。日本キリスト教団 須崎教会。毎週日曜10:15より主日礼拝。初めての方も、どうぞお気軽にお立ち寄りください。">
+<meta name="keywords" content="須崎教会, 高知県 須崎市 教会, プロテスタント 礼拝, キリスト教">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+/* =========================================================
+   Design Tokens — Susaki Church
+   ========================================================= */
+:root {
+  /* Palette — 木の温もりと自然光 */
+  --bg-base:        oklch(98% 0.008 75);   /* ウォームアイボリー */
+  --bg-sub:         oklch(95.5% 0.015 72); /* ペールベージュ */
+  --bg-deep:        oklch(92% 0.022 68);   /* 木目セクション */
+  --ink-primary:    oklch(22% 0.015 60);   /* 深い墨色 */
+  --ink-secondary:  oklch(38% 0.02 60);    /* 中間文字 */
+  --ink-muted:      oklch(55% 0.02 60);    /* 補助文字 */
+  --ink-hairline:   oklch(82% 0.015 65);   /* 罫線 */
+  --wood:           oklch(55% 0.05 55);    /* ウッドベージュ */
+  --wood-deep:      oklch(42% 0.055 50);   /* ダークウッド */
+  --gold:           oklch(70% 0.11 78);    /* 穏やかなゴールド */
+  --gold-soft:      oklch(85% 0.06 82);    /* 光のハイライト */
+
+  /* Typography */
+  --font-jp-serif:  "Noto Serif JP", "游明朝", "Yu Mincho", serif;
+  --font-jp-sans:   "Noto Sans JP", "游ゴシック", "Yu Gothic", sans-serif;
+  --font-en-serif:  "Cormorant Garamond", "Times New Roman", serif;
+
+  /* Spacing (8pt scale, generous) */
+  --sp-1: 0.5rem;   --sp-2: 1rem;    --sp-3: 1.5rem;
+  --sp-4: 2rem;     --sp-5: 3rem;    --sp-6: 4rem;
+  --sp-7: 6rem;     --sp-8: 8rem;    --sp-9: 12rem;
+
+  /* Layout */
+  --max-w: 1200px;
+  --max-w-text: 720px;
+
+  /* Motion — 重みと柔らかさ */
+  --ease-linger: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-drift:  cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur-slow:    1200ms;
+  --dur-med:     700ms;
+  --dur-fast:    350ms;
+}
+
+/* =========================================================
+   Reset & Base
+   ========================================================= */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+
+body {
+  font-family: var(--font-jp-serif);
+  font-weight: 400;
+  color: var(--ink-primary);
+  background: var(--bg-base);
+  line-height: 1.9;
+  letter-spacing: 0.04em;
+  font-feature-settings: "palt";
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  /* subtle paper texture */
+  background-image:
+    radial-gradient(oklch(90% 0.02 70 / 0.15) 1px, transparent 1px),
+    radial-gradient(oklch(90% 0.02 70 / 0.1) 1px, transparent 1px);
+  background-size: 40px 40px, 60px 60px;
+  background-position: 0 0, 20px 30px;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+/* =========================================================
+   Navigation
+   ========================================================= */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 1.25rem 3rem;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: background var(--dur-med) var(--ease-linger),
+              backdrop-filter var(--dur-med) var(--ease-linger),
+              padding var(--dur-med) var(--ease-linger),
+              box-shadow var(--dur-med) var(--ease-linger);
+}
+.nav.scrolled {
+  background: oklch(98% 0.008 75 / 0.88);
+  backdrop-filter: blur(16px) saturate(1.05);
+  -webkit-backdrop-filter: blur(16px) saturate(1.05);
+  padding: 0.9rem 3rem;
+  box-shadow: 0 1px 0 var(--ink-hairline);
+}
+
+.nav__brand {
+  display: flex; align-items: baseline; gap: 0.9rem;
+  transition: opacity var(--dur-fast) var(--ease-linger);
+}
+.nav__brand:hover { opacity: 0.72; }
+.nav__mark {
+  font-family: var(--font-en-serif);
+  font-style: italic;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--wood-deep);
+  letter-spacing: 0.02em;
+}
+.nav__name {
+  font-family: var(--font-jp-serif);
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--ink-primary);
+  letter-spacing: 0.15em;
+}
+
+.nav__menu { display: flex; gap: 2.5rem; align-items: center; }
+.nav__link {
+  font-family: var(--font-jp-serif);
+  font-weight: 400;
+  font-size: 0.9rem;
+  letter-spacing: 0.18em;
+  color: var(--ink-secondary);
+  position: relative;
+  padding: 0.5rem 0;
+  transition: color var(--dur-fast) var(--ease-linger);
+}
+.nav__link::after {
+  content: "";
+  position: absolute; left: 0; bottom: 0;
+  width: 100%; height: 1px;
+  background: var(--gold);
+  transform: scaleX(0); transform-origin: right;
+  transition: transform var(--dur-med) var(--ease-linger);
+}
+.nav__link:hover { color: var(--ink-primary); }
+.nav__link:hover::after { transform: scaleX(1); transform-origin: left; }
+
+.nav__hamburger {
+  display: none;
+  width: 32px; height: 32px;
+  position: relative;
+}
+.nav__hamburger span {
+  position: absolute; left: 4px; right: 4px; height: 1px;
+  background: var(--ink-primary);
+  transition: transform var(--dur-med) var(--ease-linger),
+              opacity var(--dur-fast) var(--ease-linger),
+              top var(--dur-med) var(--ease-linger);
+}
+.nav__hamburger span:nth-child(1) { top: 10px; }
+.nav__hamburger span:nth-child(2) { top: 16px; }
+.nav__hamburger span:nth-child(3) { top: 22px; }
+.nav.menu-open .nav__hamburger span:nth-child(1) { top: 16px; transform: rotate(45deg); }
+.nav.menu-open .nav__hamburger span:nth-child(2) { opacity: 0; }
+.nav.menu-open .nav__hamburger span:nth-child(3) { top: 16px; transform: rotate(-45deg); }
+
+/* =========================================================
+   Hero
+   ========================================================= */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: end;
+  padding: 8rem 3rem 4rem;
+  overflow: hidden;
+}
+
+.hero__image {
+  position: absolute; inset: 0;
+  background-size: cover;
+  background-position: center 40%;
+  z-index: 0;
+  transform: scale(1.05);
+  animation: heroBreath 20s var(--ease-drift) infinite alternate;
+  background-image:
+    linear-gradient(180deg,
+      oklch(98% 0.008 75 / 0.25) 0%,
+      oklch(98% 0.008 75 / 0.50) 40%,
+      oklch(98% 0.008 75 / 0.92) 100%),
+    linear-gradient(100deg,
+      oklch(98% 0.008 75 / 0.75) 0%,
+      oklch(98% 0.008 75 / 0.15) 55%,
+      transparent 100%),
+    url("hero.jpg");
+}
+
+
+/* Fallback / placeholder pattern when hero.jpg missing */
+/* 修正後：z-indexを消してdisplay:noneにする */
+.hero__image::before {
+  display: none;
+}
+
+@keyframes heroBreath {
+  0%   { transform: scale(1.05) translateY(0); }
+  100% { transform: scale(1.1) translateY(-1%); }
+}
+
+/* Sunlight rays overlay */
+.hero__rays {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 80% at 75% 20%,
+      oklch(95% 0.08 85 / 0.35) 0%,
+      transparent 60%),
+    radial-gradient(ellipse 40% 60% at 20% 30%,
+      oklch(95% 0.05 78 / 0.2) 0%,
+      transparent 50%);
+  z-index: 1;
+  pointer-events: none;
+  mix-blend-mode: soft-light;
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 2;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  width: 100%;
+}
+
+.hero__eyebrow {
+  font-family: var(--font-en-serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1.15rem;
+  color: var(--wood-deep);
+  letter-spacing: 0.05em;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroFadeIn 1.4s var(--ease-linger) 0.2s forwards;
+}
+
+.hero__title {
+  font-family: var(--font-jp-serif);
+  font-weight: 300;
+  font-size: var(--verse-size, clamp(1.15rem, 2.2vw, 1.7rem));
+  line-height: var(--verse-leading, 2.4);
+  letter-spacing: var(--verse-tracking, 0.18em);
+  color: var(--ink-primary);
+  margin-bottom: 2rem;
+  max-width: var(--verse-width, 44rem);
+  opacity: 0;
+  transform: translateY(30px);
+  animation: heroFadeIn 1.6s var(--ease-linger) 0.5s forwards;
+  /* Allow natural wrapping between phrases only */
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  text-wrap: pretty;
+}
+.hero__title .phrase {
+  display: inline-block;
+  white-space: nowrap;
+  /* Small breathing room between phrases so the line has rhythm */
+  margin-right: 0.15em;
+}
+.hero__title .phrase.accent {
+  color: var(--wood-deep);
+  font-weight: 400;
+}
+@media (max-width: 767px) {
+  .hero__title {
+    font-size: var(--verse-size-sp, 1rem);
+    line-height: var(--verse-leading, 2.2);
+    letter-spacing: 0.12em;
+    max-width: 100%;
+  }
+}
+
+
+.hero__lead {
+  font-size: 0.92rem;
+  line-height: 2;
+  color: var(--ink-secondary);
+  max-width: 40ch;
+  margin-bottom: 3rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroFadeIn 1.6s var(--ease-linger) 0.9s forwards;
+}
+
+.hero__meta {
+  display: flex;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  padding-top: 2rem;
+  border-top: 1px solid var(--ink-hairline);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroFadeIn 1.6s var(--ease-linger) 1.2s forwards;
+}
+.hero__meta-item {
+  display: flex; flex-direction: column; gap: 0.35rem;
+}
+.hero__meta-label {
+  font-family: var(--font-en-serif);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+  letter-spacing: 0.05em;
+}
+.hero__meta-value {
+  font-family: var(--font-jp-serif);
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--ink-primary);
+  letter-spacing: 0.08em;
+}
+.hero__meta-value .time {
+  font-family: var(--font-en-serif);
+  font-weight: 400;
+  font-size: 1.15rem;
+  margin-right: 0.4rem;
+}
+
+@keyframes heroFadeIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero__verse-ref {
+  font-family: var(--font-jp-serif);
+  font-weight: 400;
+  font-size: 0.82rem;
+  color: var(--wood-deep);
+  letter-spacing: 0.15em;
+  margin-bottom: 3rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroFadeIn 1.6s var(--ease-linger) 0.75s forwards;
+}
+
+.hero__scroll {
+  position: absolute;
+  bottom: 2.5rem; left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  font-family: var(--font-en-serif);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+  letter-spacing: 0.15em;
+  display: flex; flex-direction: column; align-items: center; gap: 0.75rem;
+  opacity: 0;
+  animation: heroFadeIn 1.6s var(--ease-linger) 1.6s forwards;
+}
+.hero__scroll::after {
+  content: "";
+  width: 1px; height: 48px;
+  background: linear-gradient(to bottom, var(--wood) 0%, transparent 100%);
+  animation: scrollHint 2.4s var(--ease-drift) infinite;
+}
+@keyframes scrollHint {
+  0%, 100% { transform: scaleY(0.4); transform-origin: top; opacity: 0.4; }
+  50%      { transform: scaleY(1);   transform-origin: top; opacity: 1; }
+}
+
+/* =========================================================
+   Section common
+   ========================================================= */
+section { position: relative; }
+
+.section {
+  padding: var(--sp-9) 3rem;
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.section__header {
+  margin-bottom: var(--sp-7);
+  text-align: center;
+}
+
+.section__eyebrow {
+  font-family: var(--font-en-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.1rem;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+  display: inline-block;
+  position: relative;
+}
+.section__eyebrow::before,
+.section__eyebrow::after {
+  content: "";
+  position: absolute; top: 50%;
+  width: 40px; height: 1px;
+  background: var(--gold);
+  opacity: 0.5;
+}
+.section__eyebrow::before { right: calc(100% + 1rem); }
+.section__eyebrow::after  { left: calc(100% + 1rem); }
+
+.section__title {
+  font-family: var(--font-jp-serif);
+  font-weight: 400;
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  letter-spacing: 0.15em;
+  color: var(--ink-primary);
+  line-height: 1.5;
+}
+
+.section__lead {
+  font-size: 1rem;
+  line-height: 2.1;
+  color: var(--ink-secondary);
+  max-width: var(--max-w-text);
+  margin: 2rem auto 0;
+  text-align: center;
+  letter-spacing: 0.06em;
+  text-wrap: pretty;
+}
+
+/* Fade-in reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity var(--dur-slow) var(--ease-linger),
+    transform var(--dur-slow) var(--ease-linger);
+}
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+/* Section divider — wood grain hint */
+.divider {
+  height: 1px;
+  max-width: 200px;
+  margin: 0 auto;
+  background: linear-gradient(90deg, transparent, var(--wood) 50%, transparent);
+  opacity: 0.4;
+}
+
+/* =========================================================
+   Welcome / Introduction section
+   ========================================================= */
+.welcome {
+  background: var(--bg-sub);
+  position: relative;
+}
+.welcome::before {
+  content: "";
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--ink-hairline) 20%, var(--ink-hairline) 80%, transparent);
+}
+
+.welcome-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: var(--sp-7);
+  align-items: center;
+}
+
+.welcome__image-frame {
+  height: 420px;        /* ← aspect-ratioを消してこれに変える */
+  background-color: var(--bg-deep);
+  background-image: url("interior.jpg");
+  background-size: cover;
+  background-position: center 30%;
+  position: relative;
+  overflow: hidden;
+}
+
+.welcome__image-frame::before {
+  display: none;
+}
+
+.welcome__image-frame::after {
+  display: none;
+}
+
+
+.welcome__body h3 {
+  font-family: var(--font-jp-serif);
+  font-weight: 400;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  line-height: 1.7;
+  letter-spacing: 0.12em;
+  margin-bottom: 2rem;
+  color: var(--ink-primary);
+}
+.welcome__body h3 .gold {
+  color: var(--wood-deep);
+  border-bottom: 2px solid var(--gold);
+  padding-bottom: 0.15em;
+}
+
+.welcome__body p {
+  font-size: 1rem;
+  line-height: 2.15;
+  color: var(--ink-secondary);
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.06em;
+  text-wrap: pretty;
+}
+
+.welcome__signature {
+  margin-top: 2.5rem;
+  font-family: var(--font-en-serif);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--wood-deep);
+  letter-spacing: 0.03em;
+}
+
+/* =========================================================
+   Quick guide cards (top page summary)
+   ========================================================= */
+.quick {
+  padding: var(--sp-8) 3rem;
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.quick-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--ink-hairline);
+  border: 1px solid var(--ink-hairline);
+}
+
+.quick-card {
+  background: var(--bg-base);
+  padding: 3rem 2.25rem;
+  position: relative;
+  transition: background var(--dur-med) var(--ease-linger);
+}
+.quick-card:hover { background: var(--bg-sub); }
+.quick-card__num {
+  font-family: var(--font-en-serif);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+.quick-card__label {
+  font-family: var(--font-jp-serif);
+  font-weight: 500;
+  font-size: 1.15rem;
+  letter-spacing: 0.15em;
+  color: var(--ink-primary);
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--ink-hairline);
+}
+.quick-card__when {
+  font-family: var(--font-jp-serif);
+  font-size: 0.95rem;
+  color: var(--ink-secondary);
+  line-height: 1.9;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.05em;
+}
+.quick-card__time {
+  font-family: var(--font-en-serif);
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--wood-deep);
+  letter-spacing: 0.02em;
+  display: block;
+  margin-top: 0.5rem;
+}
+
+.cta-wrap {
+  text-align: center;
+  margin-top: var(--sp-6);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.1rem 2.75rem;
+  border: 1px solid var(--wood-deep);
+  color: var(--ink-primary);
+  font-family: var(--font-jp-serif);
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.2em;
+  background: transparent;
+  position: relative;
+  overflow: hidden;
+  transition: color var(--dur-med) var(--ease-linger),
+              border-color var(--dur-med) var(--ease-linger);
+}
+.btn::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at var(--x, 50%) var(--y, 50%),
+    var(--gold-soft) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity var(--dur-med) var(--ease-linger);
+  z-index: -1;
+}
+.btn::after {
+  content: "→";
+  font-family: var(--font-en-serif);
+  font-size: 1.15rem;
+  transform: translateX(0);
+  transition: transform var(--dur-med) var(--ease-linger);
+}
+.btn:hover { border-color: var(--gold); color: var(--wood-deep); }
+.btn:hover::before { opacity: 1; }
+.btn:hover::after { transform: translateX(6px); }
+
+/* =========================================================
+   Meetings section — Sunday worship timeline (the risk)
+   ========================================================= */
+.meetings {
+  background: var(--bg-base);
+  padding-top: var(--sp-9);
+}
+
+.meetings__intro {
+  max-width: var(--max-w-text);
+  margin: 0 auto var(--sp-7);
+  text-align: center;
+  font-size: 1rem;
+  line-height: 2.1;
+  color: var(--ink-secondary);
+  letter-spacing: 0.06em;
+  text-wrap: pretty;
+}
+
+/* Sub-nav for meeting types */
+.meetings__tabs {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: var(--sp-6);
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--ink-hairline);
+  max-width: 960px;
+  margin-left: auto; margin-right: auto;
+}
+.meetings__tab {
+  padding: 1.25rem 1.75rem;
+  font-family: var(--font-jp-serif);
+  font-size: 0.95rem;
+  letter-spacing: 0.15em;
+  color: var(--ink-muted);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color var(--dur-med) var(--ease-linger),
+              border-color var(--dur-med) var(--ease-linger);
+}
+.meetings__tab.active,
+.meetings__tab:hover {
+  color: var(--ink-primary);
+  border-bottom-color: var(--gold);
+}
+
+.meeting-panel { display: none; }
+.meeting-panel.active { display: block; animation: fadeIn 0.6s var(--ease-linger); }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.meeting-head {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 2rem;
+  align-items: baseline;
+  padding-bottom: 1.5rem;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid var(--ink-hairline);
+}
+.meeting-head__num {
+  font-family: var(--font-en-serif);
+  font-style: italic;
+  font-size: 2.5rem;
+  color: var(--gold);
+  font-weight: 300;
+  line-height: 1;
+}
+.meeting-head__title {
+  font-family: var(--font-jp-serif);
+  font-weight: 500;
+  font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+  letter-spacing: 0.15em;
+  color: var(--ink-primary);
+}
+.meeting-head__when {
+  font-family: var(--font-jp-serif);
+  font-size: 0.95rem;
+  color: var(--wood-deep);
+  letter-spacing: 0.08em;
+  text-align: right;
+}
+.meeting-head__when .time {
+  font-family: var(--font-en-serif);
+  font-size: 1.35rem;
+  display: block;
+  margin-top: 0.3rem;
+}
+
+.meeting-note {
+  max-width: var(--max-w-text);
+  margin: 0 auto 3rem;
+  text-align: center;
+  color: var(--ink-secondary);
+  font-size: 0.95rem;
+  line-height: 2;
+  padding: 1.5rem 2rem;
+  background: var(--bg-sub);
+  border-left: 2px solid var(--gold);
+}
+
+/* ---- Worship Timeline (the interactive part) ---- */
+.timeline {
+  position: relative;
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 2rem 0 4rem 5rem;
+}
+
+.timeline__rail {
+  position: absolute;
+  left: 2rem;
+  top: 2rem; bottom: 4rem;
+  width: 1px;
+  background: var(--ink-hairline);
+}
+.timeline__progress {
+  position: absolute;
+  left: 2rem;
+  top: 2rem;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--gold-soft), var(--gold));
+  height: 0;
+  transition: height 0.15s linear;
+  box-shadow: 0 0 12px var(--gold-soft);
+}
+
+.timeline__step {
+  position: relative;
+  padding: 1.5rem 0 1.5rem 2.5rem;
+  margin-left: -2.5rem;
+  transition: opacity var(--dur-slow) var(--ease-linger),
+              transform var(--dur-slow) var(--ease-linger);
+  opacity: 0.32;
+}
+.timeline__step.is-active {
+  opacity: 1;
+}
+.timeline__step.is-passed {
+  opacity: 0.55;
+}
+
+.timeline__dot {
+  position: absolute;
+  left: -0.5rem; top: 2rem;
+  width: 11px; height: 11px;
+  border-radius: 50%;
+  background: var(--bg-base);
+  border: 1px solid var(--ink-hairline);
+  transition: all var(--dur-med) var(--ease-linger);
+  z-index: 2;
+}
+.timeline__step.is-active .timeline__dot {
+  background: var(--gold);
+  border-color: var(--gold);
+  box-shadow: 0 0 0 6px oklch(70% 0.11 78 / 0.18),
+              0 0 20px var(--gold-soft);
+  transform: scale(1.15);
+}
+.timeline__step.is-passed .timeline__dot {
+  background: var(--gold);
+  border-color: var(--gold);
+  opacity: 0.6;
+}
+
+.timeline__step-inner {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.75rem;
+  align-items: baseline;
+  transition: transform var(--dur-med) var(--ease-linger);
+}
+.timeline__step.is-active .timeline__step-inner {
+  transform: translateX(8px);
+}
+
+.timeline__num {
+  font-family: var(--font-en-serif);
+  font-style: italic;
+  font-size: 1.75rem;
+  font-weight: 300;
+  color: var(--ink-muted);
+  min-width: 3ch;
+  line-height: 1;
+  transition: color var(--dur-med) var(--ease-linger);
+}
+.timeline__step.is-active .timeline__num {
+  color: var(--gold);
+}
+
+.timeline__label {
+  font-family: var(--font-jp-serif);
+  font-weight: 500;
+  font-size: 1.15rem;
+  letter-spacing: 0.15em;
+  color: var(--ink-primary);
+  margin-bottom: 0.4rem;
+  line-height: 1.5;
+}
+.timeline__desc {
+  font-size: 0.9rem;
+  line-height: 1.9;
+  color: var(--ink-secondary);
+  letter-spacing: 0.04em;
+  text-wrap: pretty;
+}
+
+.timeline__footnote {
+  margin-top: 3rem;
+  padding: 1.5rem 2rem;
+  background: var(--bg-sub);
+  font-size: 0.85rem;
+  line-height: 1.9;
+  color: var(--ink-secondary);
+  border-left: 2px solid var(--wood);
+  letter-spacing: 0.05em;
+}
+
+/* Other meeting panels */
+.meeting-simple {
+  max-width: var(--max-w-text);
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+.meeting-simple p {
+  font-size: 1rem;
+  line-height: 2.1;
+  color: var(--ink-secondary);
+  letter-spacing: 0.06em;
+  margin-bottom: 1.5rem;
+  text-wrap: pretty;
+}
+.meeting-simple__detail {
+  display: grid;
+  grid-template-columns: 8rem 1fr;
+  gap: 1rem 2rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--ink-hairline);
+}
+.meeting-simple__detail dt {
+  font-family: var(--font-jp-serif);
+  font-weight: 500;
+  color: var(--ink-primary);
+  letter-spacing: 0.1em;
+  font-size: 0.9rem;
+}
+.meeting-simple__detail dd {
+  color: var(--ink-secondary);
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+}
+
+/* =========================================================
+   FAQ
+   ========================================================= */
+.faq {
+  background: var(--bg-sub);
+  padding-top: var(--sp-9);
+  padding-bottom: var(--sp-9);
+}
+.faq__container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 3rem;
+}
+.faq__list {
+  margin-top: var(--sp-6);
+}
+.faq__item {
+  border-bottom: 1px solid var(--ink-hairline);
+  transition: background var(--dur-med) var(--ease-linger);
+}
+.faq__item:first-child { border-top: 1px solid var(--ink-hairline); }
+
+.faq__q {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 1.75rem 0.5rem;
+  width: 100%;
+  text-align: left;
+  transition: padding var(--dur-med) var(--ease-linger);
+}
+.faq__q:hover { padding-left: 1rem; }
+
+.faq__q-mark {
+  font-family: var(--font-en-serif);
+  font-style: italic;
+  font-size: 1.35rem;
+  color: var(--gold);
+  font-weight: 400;
+}
+.faq__q-text {
+  font-family: var(--font-jp-serif);
+  font-weight: 500;
+  font-size: 1.02rem;
+  letter-spacing: 0.08em;
+  color: var(--ink-primary);
+  line-height: 1.7;
+}
+.faq__toggle {
+  width: 22px; height: 22px;
+  position: relative;
+  transition: transform var(--dur-med) var(--ease-linger);
+}
+.faq__toggle::before, .faq__toggle::after {
+  content: "";
+  position: absolute;
+  background: var(--wood-deep);
+  transition: transform var(--dur-med) var(--ease-linger);
+}
+.faq__toggle::before {
+  top: 50%; left: 0; right: 0; height: 1px;
+  transform: translateY(-0.5px);
+}
+.faq__toggle::after {
+  top: 0; bottom: 0; left: 50%; width: 1px;
+  transform: translateX(-0.5px);
+}
+.faq__item.is-open .faq__toggle::after { transform: translateX(-0.5px) rotate(90deg); opacity: 0; }
+
+.faq__a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s var(--ease-linger);
+}
+.faq__item.is-open .faq__a { max-height: 400px; }
+
+.faq__a-inner {
+  padding: 0 3rem 2rem 3rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.5rem;
+  align-items: baseline;
+}
+.faq__a-mark {
+  font-family: var(--font-en-serif);
+  font-style: italic;
+  font-size: 1.35rem;
+  color: var(--wood);
+  font-weight: 400;
+}
+.faq__a-text {
+  font-family: var(--font-jp-serif);
+  font-size: 0.98rem;
+  line-height: 2;
+  color: var(--ink-secondary);
+  letter-spacing: 0.05em;
+  text-wrap: pretty;
+}
+
+/* =========================================================
+   Instagram
+   ========================================================= */
+.instagram {
+  background: var(--bg-base);
+  padding-top: var(--sp-9);
+  padding-bottom: var(--sp-8);
+  position: relative;
+}
+.instagram::before {
+  content: "";
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--ink-hairline) 20%, var(--ink-hairline) 80%, transparent);
+}
+
+.insta-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+.insta-cell {
+  aspect-ratio: 1 / 1;
+  background: var(--bg-sub);
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--dur-med) var(--ease-linger),
+              box-shadow var(--dur-med) var(--ease-linger);
+}
+.insta-cell::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    var(--bg-sub) 0px, var(--bg-sub) 10px,
+    var(--bg-deep) 10px, var(--bg-deep) 11px
+  );
+  opacity: 0.9;
+}
+.insta-cell__inner {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 1;
+  transition: background var(--dur-med) var(--ease-linger),
+              opacity var(--dur-med) var(--ease-linger);
+}
+.insta-cell__inner span {
+  font-family: var(--font-en-serif);
+  font-style: italic;
+  font-size: 0.8rem;
+  color: var(--ink-muted);
+  letter-spacing: 0.1em;
+}
+.insta-cell:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px oklch(50% 0.05 60 / 0.12);
+}
+.insta-cell:hover .insta-cell__inner {
+  background: oklch(70% 0.11 78 / 0.15);
+}
+
+.insta-btn__icon {
+  display: inline-flex; align-items: center;
+  color: var(--wood-deep);
+  transition: color var(--dur-med) var(--ease-linger);
+}
+.insta-btn:hover .insta-btn__icon { color: var(--gold); }
+
+@media (max-width: 1024px) {
+  .insta-grid { grid-template-columns: repeat(3, 1fr); }
+  .insta-cell[data-idx="05"], .insta-cell[data-idx="06"] { display: none; }
+}
+@media (max-width: 767px) {
+  .insta-grid { grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
+  .insta-cell[data-idx="05"], .insta-cell[data-idx="06"] { display: none; }
+}
+
+/* =========================================================
+   Access
+   ========================================================= */
+.access {
+  padding-top: var(--sp-9);
+  padding-bottom: var(--sp-9);
+}
+
+.access-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: var(--sp-7);
+  align-items: start;
+  margin-top: var(--sp-6);
+}
+
+.access__info dl {
+  display: grid;
+  grid-template-columns: 8rem 1fr;
+  gap: 1.75rem 2rem;
+  padding: 2rem 0;
+  border-top: 1px solid var(--ink-hairline);
+  border-bottom: 1px solid var(--ink-hairline);
+}
+.access__info dt {
+  font-family: var(--font-jp-serif);
+  font-weight: 500;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  color: var(--ink-muted);
+  padding-top: 0.25rem;
+}
+.access__info dd {
+  font-family: var(--font-jp-serif);
+  font-size: 0.98rem;
+  color: var(--ink-primary);
+  letter-spacing: 0.06em;
+  line-height: 1.8;
+}
+.access__info dd a { color: var(--wood-deep); border-bottom: 1px solid var(--ink-hairline); transition: border-color var(--dur-fast) var(--ease-linger); }
+.access__info dd a:hover { border-color: var(--gold); }
+
+.access__transport {
+  margin-top: 2.5rem;
+}
+.access__transport-title {
+  font-family: var(--font-en-serif);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.05em;
+}
+.access__transport ul {
+  list-style: none;
+}
+.access__transport li {
+  padding: 0.9rem 0 0.9rem 1.75rem;
+  position: relative;
+  font-size: 0.95rem;
+  color: var(--ink-secondary);
+  letter-spacing: 0.06em;
+  line-height: 1.8;
+  border-bottom: 1px dotted var(--ink-hairline);
+}
+.access__transport li::before {
+  content: "";
+  position: absolute; left: 0; top: 1.35rem;
+  width: 8px; height: 1px;
+  background: var(--gold);
+}
+
+.access__pastor {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: var(--bg-sub);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.75rem;
+  align-items: center;
+}
+.access__pastor-photo {
+  width: 88px; height: 88px;
+  background-image: url("pastor.jpg");
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  background-color: var(--bg-deep);
+  position: relative;
+  overflow: hidden;
+}
+.access__pastor-photo::after {
+  content: "pastor.jpg";
+  position: absolute; inset: 0;
+  font-family: monospace; font-size: 0.6rem;
+  color: var(--ink-muted);
+  display: flex; align-items: center; justify-content: center;
+  background: repeating-linear-gradient(45deg,
+    var(--bg-deep) 0 6px, var(--bg-sub) 6px 7px);
+  z-index: -1;
+}
+.access__pastor-label {
+  font-family: var(--font-en-serif);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.35rem;
+}
+.access__pastor-name {
+  font-family: var(--font-jp-serif);
+  font-weight: 500;
+  font-size: 1.15rem;
+  letter-spacing: 0.12em;
+  color: var(--ink-primary);
+}
+.access__pastor-name .reading {
+  font-size: 0.75rem;
+  color: var(--ink-muted);
+  display: block;
+  margin-top: 0.35rem;
+  letter-spacing: 0.1em;
+  font-weight: 400;
+}
+
+.access__map {
+  aspect-ratio: 4 / 5;
+  background: var(--bg-deep);
+  position: relative;
+  overflow: hidden;
+}
+.access__map iframe {
+  width: 100%; height: 100%;
+  border: 0;
+  filter: saturate(0.85) contrast(0.95);
+}
+
+/* =========================================================
+   Footer
+   ========================================================= */
+.footer {
+  background: oklch(20% 0.015 60);
+  color: oklch(88% 0.01 70);
+  padding: var(--sp-7) 3rem var(--sp-4);
+  position: relative;
+}
+.footer::before {
+  content: "";
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold) 50%, transparent);
+  opacity: 0.4;
+}
+.footer__inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid oklch(35% 0.015 60);
+}
+.footer__brand-en {
+  font-family: var(--font-en-serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1.5rem;
+  color: var(--gold-soft);
+  letter-spacing: 0.03em;
+  margin-bottom: 0.75rem;
+}
+.footer__brand-jp {
+  font-family: var(--font-jp-serif);
+  font-weight: 500;
+  font-size: 1.1rem;
+  letter-spacing: 0.18em;
+  color: oklch(96% 0.01 70);
+  margin-bottom: 2rem;
+}
+.footer__message {
+  font-size: 0.9rem;
+  line-height: 2;
+  color: oklch(78% 0.01 70);
+  letter-spacing: 0.06em;
+  text-wrap: pretty;
+}
+.footer__col h4 {
+  font-family: var(--font-en-serif);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--gold-soft);
+  letter-spacing: 0.08em;
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+}
+.footer__col ul { list-style: none; }
+.footer__col li {
+  padding: 0.5rem 0;
+  font-size: 0.9rem;
+  color: oklch(80% 0.01 70);
+  letter-spacing: 0.06em;
+  line-height: 1.8;
+}
+.footer__col a { transition: color var(--dur-fast) var(--ease-linger); }
+.footer__col a:hover { color: var(--gold-soft); }
+.footer__bottom {
+  max-width: var(--max-w);
+  margin: 2rem auto 0;
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--font-en-serif);
+  font-style: italic;
+  font-size: 0.8rem;
+  color: oklch(65% 0.01 70);
+  letter-spacing: 0.05em;
+}
+
+/* =========================================================
+   Responsive
+   ========================================================= */
+@media (max-width: 1024px) {
+  .welcome-grid, .access-grid { grid-template-columns: 1fr; }
+  .welcome__image-frame { max-width: 480px; margin: 0 auto; }
+}
+@media (max-width: 767px) {
+  html { scroll-padding-top: 72px; }
+  .nav { padding: 1rem 1.25rem; }
+  .nav.scrolled { padding: 0.75rem 1.25rem; }
+  .nav__menu {
+    position: fixed;
+    top: 0; right: 0;
+    width: 78%; height: 100vh;
+    background: var(--bg-base);
+    flex-direction: column;
+    justify-content: center;
+    gap: 2.5rem;
+    transform: translateX(100%);
+    transition: transform var(--dur-med) var(--ease-linger);
+    box-shadow: -1px 0 40px oklch(0% 0 0 / 0.08);
+  }
+  .nav.menu-open .nav__menu { transform: translateX(0); }
+  .nav__link { font-size: 1.1rem; letter-spacing: 0.2em; }
+  .nav__hamburger { display: block; z-index: 101; }
+
+  .nav__name { font-size: 0.85rem; letter-spacing: 0.1em; }
+  .nav__mark { font-size: 1.25rem; }
+
+  .hero { padding: 6rem 1.5rem 3rem; min-height: 90vh; }
+  .hero__meta { gap: 1.5rem; }
+  .hero__meta-item { min-width: 45%; }
+
+  .section { padding: var(--sp-7) 1.5rem; }
+  .quick { padding: var(--sp-6) 1.5rem; }
+  .quick-grid { grid-template-columns: 1fr; }
+
+  .meetings__tabs { flex-wrap: wrap; gap: 0; }
+  .meetings__tab { padding: 0.9rem 1rem; font-size: 0.85rem; }
+  .meeting-head { grid-template-columns: auto 1fr; gap: 1rem; }
+  .meeting-head__when { grid-column: 1 / -1; text-align: left; padding-top: 0.5rem; }
+
+  .timeline { padding-left: 3rem; }
+  .timeline__rail, .timeline__progress { left: 1rem; }
+  .timeline__step { padding-left: 2rem; }
+
+  .faq__container { padding: 0 1.5rem; }
+  .faq__q { grid-template-columns: auto 1fr auto; gap: 1rem; }
+  .faq__q-text { font-size: 0.95rem; }
+  .faq__a-inner { padding: 0 0 1.75rem 2rem; }
+
+  .access__info dl { grid-template-columns: 5.5rem 1fr; gap: 1rem 1rem; }
+  .footer { padding: var(--sp-6) 1.5rem var(--sp-3); }
+  .footer__inner { grid-template-columns: 1fr; gap: 2rem; }
+  .footer__bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+}
+
+/* Motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ================================================
+     NAV
+================================================ -->
+<nav class="nav" id="nav">
+  <a href="#top" class="nav__brand">
+    <span class="nav__mark">Susaki</span>
+    <span class="nav__name">須崎教会</span>
+  </a>
+  <div class="nav__menu">
+    <a href="#welcome" class="nav__link">ようこそ</a>
+    <a href="#meetings" class="nav__link">集会案内</a>
+    <a href="#faq" class="nav__link">はじめての方へ</a>
+    <a href="#instagram" class="nav__link">Instagram</a>
+    <a href="#access" class="nav__link">アクセス</a>
+  </div>
+  <button class="nav__hamburger" aria-label="メニュー" id="hamburger">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ================================================
+     HERO
+================================================ -->
+<header class="hero" id="top">
+  <div class="hero__image"></div>
+  <div class="hero__rays"></div>
+  <div class="hero__inner">
+    <p class="hero__eyebrow">Japan Christian Church &mdash; Susaki</p>
+    <h1 class="hero__title" id="hero-title">
+      <span class="phrase">すべて、疲れた人、</span><span class="phrase">重荷を負っている人は、</span><span class="phrase accent">わたしのところに来なさい。</span><span class="phrase">わたしがあなたがたを</span><span class="phrase">休ませてあげます。</span>
+    </h1>
+    <p class="hero__verse-ref">&mdash;&mdash; マタイによる福音書 第11章28節</p>
+    <p class="hero__lead">
+      日本キリスト教団 須崎教会は、<br>
+      高知県須崎市の小さなプロテスタント教会です。<br>
+      どうぞお気軽に、お立ち寄りください。
+    </p>
+    <div class="hero__meta">
+      <div class="hero__meta-item">
+        <span class="hero__meta-label">Sunday Worship</span>
+        <span class="hero__meta-value"><span class="time">10:15</span>主日礼拝</span>
+      </div>
+      <div class="hero__meta-item">
+        <span class="hero__meta-label">Sunday School</span>
+        <span class="hero__meta-value"><span class="time">9:00</span>教会学校</span>
+      </div>
+      <div class="hero__meta-item">
+        <span class="hero__meta-label">Prayer Meeting</span>
+        <span class="hero__meta-value"><span class="time">10:30</span>祈祷会（木）</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero__scroll">
+    <span>Scroll</span>
+  </div>
+</header>
+
+<!-- ================================================
+     WELCOME
+================================================ -->
+<section class="welcome" id="welcome">
+  <div class="section">
+    <div class="section__header reveal">
+      <span class="section__eyebrow">Welcome</span>
+      <h2 class="section__title">ようこそ、須崎教会へ</h2>
+    </div>
+
+    <div class="welcome-grid">
+      <div class="welcome__image-frame reveal"></div>
+      <div class="welcome__body reveal">
+        <h3>
+          須崎教会は、<br>
+          日本基督キリスト教団に所属する<br>
+          <span class="gold">プロテスタント教会</span>です。
+        </h3>
+        <p>
+          教会の扉は、いつでも誰にでも開かれています。<br>
+          ぜひお気軽に、お立ち寄りください。
+        </p>
+        <p>
+          日曜日の朝、木造の礼拝堂には、静かにオルガンの音色が響きます。<br>
+          初めての方も、久しぶりの方も、どうぞそのままの姿でお越しください。
+        </p>
+        <div class="welcome__signature">&mdash; 牧師 秦 貴詞</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================
+     QUICK GUIDE
+================================================ -->
+<section class="quick">
+  <div class="section__header reveal">
+    <span class="section__eyebrow">This Week</span>
+    <h2 class="section__title">今週の集会案内</h2>
+  </div>
+  <div class="quick-grid reveal">
+    <div class="quick-card">
+      <span class="quick-card__num">01</span>
+      <div class="quick-card__label">主日礼拝</div>
+      <div class="quick-card__when">毎週日曜日</div>
+      <span class="quick-card__time">10:15 &ndash; 11:30</span>
+    </div>
+    <div class="quick-card">
+      <span class="quick-card__num">02</span>
+      <div class="quick-card__label">教会学校</div>
+      <div class="quick-card__when">毎週日曜日</div>
+      <span class="quick-card__time">9:00 &ndash; 10:00</span>
+    </div>
+    <div class="quick-card">
+      <span class="quick-card__num">03</span>
+      <div class="quick-card__label">祈祷会</div>
+      <div class="quick-card__when">毎週木曜日</div>
+      <span class="quick-card__time">10:30 &ndash; 11:30</span>
+    </div>
+  </div>
+  <div class="cta-wrap reveal">
+    <a href="#meetings" class="btn">集会案内を詳しく見る</a>
+  </div>
+</section>
+
+<!-- ================================================
+     MEETINGS
+================================================ -->
+<section class="meetings" id="meetings">
+  <div class="section">
+    <div class="section__header reveal">
+      <span class="section__eyebrow">Meetings</span>
+      <h2 class="section__title">集会案内</h2>
+    </div>
+
+    <p class="meetings__intro reveal">
+      須崎教会では様々な集会が行われています。どの集会も、どなたでもご参加いただけます。<br>
+      初めての方は、まず主日礼拝においでくださることをおすすめします。<br>
+      予約や事前連絡などは、必要ありません。ご不明な点がありましたら、どんなことでもお気軽にお問い合わせください。
+    </p>
+
+    <div class="meetings__tabs reveal" role="tablist">
+      <button class="meetings__tab active" data-panel="worship">主日礼拝</button>
+      <button class="meetings__tab" data-panel="school">教会学校</button>
+      <button class="meetings__tab" data-panel="prayer">祈祷会</button>
+      <button class="meetings__tab" data-panel="lecture">キリスト教講座</button>
+      <button class="meetings__tab" data-panel="yusuhara">梼原礼拝</button>
+      <button class="meetings__tab" data-panel="kubokawa">窪川聖餐礼拝</button>
+    </div>
+
+    <!-- Worship panel with timeline -->
+    <div class="meeting-panel active" data-panel="worship">
+      <div class="meeting-head reveal">
+        <div class="meeting-head__num">01</div>
+        <h3 class="meeting-head__title">主日礼拝</h3>
+        <div class="meeting-head__when">
+          毎週日曜日
+          <span class="time">10:15 &ndash; 11:30</span>
+        </div>
+      </div>
+
+      <div class="meeting-note reveal">
+        初めての方は 10:30 からでもお越しいただけます。受付にて「初めてです」とお声がけください。
+      </div>
+
+      <div class="timeline" id="timeline">
+        <div class="timeline__rail"></div>
+        <div class="timeline__progress" id="timeline-progress"></div>
+
+        <div class="timeline__step">
+          <div class="timeline__dot"></div>
+          <div class="timeline__step-inner">
+            <div class="timeline__num">01</div>
+            <div>
+              <div class="timeline__label">前奏</div>
+              <div class="timeline__desc">オルガン演奏を聴きながら、静かに黙祷します。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline__step">
+          <div class="timeline__dot"></div>
+          <div class="timeline__step-inner">
+            <div class="timeline__num">02</div>
+            <div>
+              <div class="timeline__label">招詞（しょうし）</div>
+              <div class="timeline__desc">司式者が聖書箇所を読み上げます。着席のままお聞きください。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline__step">
+          <div class="timeline__dot"></div>
+          <div class="timeline__step-inner">
+            <div class="timeline__num">03</div>
+            <div>
+              <div class="timeline__label">讃詠（さんえい）<sup>＊</sup></div>
+              <div class="timeline__desc">起立して『讃美歌』を歌います。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline__step">
+          <div class="timeline__dot"></div>
+          <div class="timeline__step-inner">
+            <div class="timeline__num">04</div>
+            <div>
+              <div class="timeline__label">主の祈り<sup>＊</sup></div>
+              <div class="timeline__desc">起立して備え付けのものを見ながら唱えます。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline__step">
+          <div class="timeline__dot"></div>
+          <div class="timeline__step-inner">
+            <div class="timeline__num">05</div>
+            <div>
+              <div class="timeline__label">交読文（こうどくぶん）<sup>＊</sup></div>
+              <div class="timeline__desc">起立して司式者と交互に読み上げます。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline__step">
+          <div class="timeline__dot"></div>
+          <div class="timeline__step-inner">
+            <div class="timeline__num">06</div>
+            <div>
+              <div class="timeline__label">讃美歌21<sup>＊</sup></div>
+              <div class="timeline__desc">起立して『讃美歌21』を歌います。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline__step">
+          <div class="timeline__dot"></div>
+          <div class="timeline__step-inner">
+            <div class="timeline__num">07</div>
+            <div>
+              <div class="timeline__label">聖書</div>
+              <div class="timeline__desc">司式者がその日の聖書箇所を読み上げます。着席のままお聞きください。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline__step">
+          <div class="timeline__dot"></div>
+          <div class="timeline__step-inner">
+            <div class="timeline__num">08</div>
+            <div>
+              <div class="timeline__label">祈祷</div>
+              <div class="timeline__desc">司式者が祈りを捧げます。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline__step">
+          <div class="timeline__dot"></div>
+          <div class="timeline__step-inner">
+            <div class="timeline__num">09</div>
+            <div>
+              <div class="timeline__label">讃美歌<sup>＊</sup></div>
+              <div class="timeline__desc">起立して『讃美歌』を歌います。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline__step">
+          <div class="timeline__dot"></div>
+          <div class="timeline__step-inner">
+            <div class="timeline__num">10</div>
+            <div>
+              <div class="timeline__label">信仰告白<sup>＊</sup></div>
+              <div class="timeline__desc">
+                起立して唱和します。<br>
+                聖餐式のある日は「日本基督教団信仰告白」、それ以外の日は「使徒信条」を用います。
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline__step">
+          <div class="timeline__dot"></div>
+          <div class="timeline__step-inner">
+            <div class="timeline__num">11</div>
+            <div>
+              <div class="timeline__label">説教・祈祷</div>
+              <div class="timeline__desc">牧師による、20〜30分程度の聖書の説き明かしと祈りです。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline__step">
+          <div class="timeline__dot"></div>
+          <div class="timeline__step-inner">
+            <div class="timeline__num">12</div>
+            <div>
+              <div class="timeline__label">聖餐（せいさん）</div>
+              <div class="timeline__desc">
+                第1週目と祝祭日に行います。洗礼を受けた方が与ります。<br>
+                その他の方は、着席のままお待ちください。
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline__step">
+          <div class="timeline__dot"></div>
+          <div class="timeline__step-inner">
+            <div class="timeline__num">13</div>
+            <div>
+              <div class="timeline__label">讃美歌<sup>＊</sup></div>
+              <div class="timeline__desc">起立して『讃美歌』を歌います。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline__step">
+          <div class="timeline__dot"></div>
+          <div class="timeline__step-inner">
+            <div class="timeline__num">14</div>
+            <div>
+              <div class="timeline__label">献金</div>
+              <div class="timeline__desc">
+                献金当番が回ります。感謝の表れであり、強制ではありません。<br>
+                ご用意がなければ、そのまま着席のままでお待ちください。
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline__step">
+          <div class="timeline__dot"></div>
+          <div class="timeline__step-inner">
+            <div class="timeline__num">15</div>
+            <div>
+              <div class="timeline__label">頌栄（しょうえい）<sup>＊</sup></div>
+              <div class="timeline__desc">起立して『讃美歌』を歌います。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline__step">
+          <div class="timeline__dot"></div>
+          <div class="timeline__step-inner">
+            <div class="timeline__num">16</div>
+            <div>
+              <div class="timeline__label">祝祷（しゅくとう）<sup>＊</sup></div>
+              <div class="timeline__desc">起立して、牧師の祝福の祈りを聞き、黙祷します。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline__step">
+          <div class="timeline__dot"></div>
+          <div class="timeline__step-inner">
+            <div class="timeline__num">17</div>
+            <div>
+              <div class="timeline__label">後奏</div>
+              <div class="timeline__desc">オルガン演奏を聴きながら、静かに黙祷します。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline__footnote">
+          ＊印の箇所は、お差し支えない方はご起立ください。お座りになったままでも構いません。
+        </div>
+      </div>
+    </div>
+
+    <!-- Sunday School -->
+    <div class="meeting-panel" data-panel="school">
+      <div class="meeting-head reveal">
+        <div class="meeting-head__num">02</div>
+        <h3 class="meeting-head__title">教会学校</h3>
+        <div class="meeting-head__when">
+          毎週日曜日
+          <span class="time">9:00 &ndash; 10:00</span>
+        </div>
+      </div>
+      <div class="meeting-simple reveal">
+        <p>
+          幼児・小学生・中学生・高校生を対象に、礼拝と楽しいプログラムを行っています。<br>
+          保護者の方の参加も歓迎いたします。お子さまが安心して過ごせる時間です。
+        </p>
+        <dl class="meeting-simple__detail">
+          <dt>対象</dt><dd>幼児 〜 高校生（保護者の同席も歓迎）</dd>
+          <dt>内容</dt><dd>礼拝、聖書のお話、賛美、工作などの楽しいプログラム</dd>
+          <dt>場所</dt><dd>須崎教会内</dd>
+        </dl>
+      </div>
+    </div>
+
+    <!-- Prayer Meeting -->
+    <div class="meeting-panel" data-panel="prayer">
+      <div class="meeting-head reveal">
+        <div class="meeting-head__num">03</div>
+        <h3 class="meeting-head__title">祈祷会</h3>
+        <div class="meeting-head__when">
+          毎週木曜日
+          <span class="time">10:30 &ndash; 11:30</span>
+        </div>
+      </div>
+      <div class="meeting-simple reveal">
+        <p>
+          聖書の学びと、共に祈るための静かな時間です。<br>
+          現在は<span style="color: var(--wood-deep);">ヨシュア記</span>を読み進めています。
+        </p>
+        <dl class="meeting-simple__detail">
+          <dt>内容</dt><dd>聖書の学び、祈祷</dd>
+          <dt>参加</dt><dd>どなたでもご参加いただけます</dd>
+        </dl>
+      </div>
+    </div>
+
+    <!-- Christian Lecture -->
+    <div class="meeting-panel" data-panel="lecture">
+      <div class="meeting-head reveal">
+        <div class="meeting-head__num">04</div>
+        <h3 class="meeting-head__title">キリスト教講座</h3>
+        <div class="meeting-head__when">
+          随時実施
+          <span class="time">応相談</span>
+        </div>
+      </div>
+      <div class="meeting-simple reveal">
+        <p>
+          聖書を初めて読む方に向けた、ゆっくり学べる会です。<br>
+          「聖書ってどんな本?」「キリスト教とは?」といった素朴な疑問から、ご一緒に読み解いていきます。<br>
+          ご希望に応じて随時、日程を調整して実施しております。まずはお問い合わせください。
+        </p>
+      </div>
+    </div>
+
+    <!-- Yusuhara -->
+    <div class="meeting-panel" data-panel="yusuhara">
+      <div class="meeting-head reveal">
+        <div class="meeting-head__num">05</div>
+        <h3 class="meeting-head__title">梼原（ゆすはら）礼拝</h3>
+        <div class="meeting-head__when">
+          毎月 第2・第4 日曜日
+          <span class="time">15:00 &ndash; 16:00</span>
+        </div>
+      </div>
+      <div class="meeting-simple reveal">
+        <p>
+          梼原町の集会所にて、毎月2回の礼拝を行っております。<br>
+          須崎教会からお越しいただいた方はもちろん、地域の皆さまのご参加を歓迎いたします。
+        </p>
+        <dl class="meeting-simple__detail">
+          <dt>場所</dt><dd>梼原町集会所<br>高知県高岡郡梼原町梼原1486番地</dd>
+          <dt>日程</dt><dd>毎月 第2・第4 日曜日 15:00〜16:00</dd>
+        </dl>
+      </div>
+    </div>
+
+    <!-- Kubokawa -->
+    <div class="meeting-panel" data-panel="kubokawa">
+      <div class="meeting-head reveal">
+        <div class="meeting-head__num">06</div>
+        <h3 class="meeting-head__title">窪川（くぼかわ）聖餐礼拝</h3>
+        <div class="meeting-head__when">
+          毎月1回 土曜日
+          <span class="time">応相談</span>
+        </div>
+      </div>
+      <div class="meeting-simple reveal">
+        <p>
+          四万十町の教会員のご自宅にて、月に一度、聖餐礼拝を執り行っております。<br>
+          ご参加をご希望の方は、お手数ですが事前にお問い合わせください。
+        </p>
+        <dl class="meeting-simple__detail">
+          <dt>場所</dt><dd>四万十町の教会員宅</dd>
+          <dt>日程</dt><dd>毎月1回 土曜日（日程はお問い合わせください）</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ================================================
+     FAQ
+================================================ -->
+<section class="faq" id="faq">
+  <div class="faq__container">
+    <div class="section__header reveal">
+      <span class="section__eyebrow">First Visit</span>
+      <h2 class="section__title">はじめての方へ</h2>
+      <p class="section__lead">
+        教会にお越しになる前の、素朴な疑問にお答えいたします。<br>
+        ここに書かれていないことも、どうぞお気軽にお問い合わせください。
+      </p>
+    </div>
+
+    <div class="faq__list reveal">
+      <!-- FAQ items -->
+      <div class="faq__item">
+        <button class="faq__q">
+          <span class="faq__q-mark">Q.</span>
+          <span class="faq__q-text">初めて教会に行きます。予約は必要ですか?</span>
+          <span class="faq__toggle" aria-hidden="true"></span>
+        </button>
+        <div class="faq__a">
+          <div class="faq__a-inner">
+            <span class="faq__a-mark">A.</span>
+            <p class="faq__a-text">
+              いいえ、予約は不要です。当日そのままお越しください。受付にて「初めてです」とお伝えいただければ、ご案内いたします。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__q">
+          <span class="faq__q-mark">Q.</span>
+          <span class="faq__q-text">信者ではありませんが、礼拝に参加できますか?</span>
+          <span class="faq__toggle" aria-hidden="true"></span>
+        </button>
+        <div class="faq__a">
+          <div class="faq__a-inner">
+            <span class="faq__a-mark">A.</span>
+            <p class="faq__a-text">
+              はい、どなたでも自由にご参加いただけます。信者かどうかは問いません。どうぞお気軽にお越しください。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__q">
+          <span class="faq__q-mark">Q.</span>
+          <span class="faq__q-text">費用はかかりますか? 献金はいくらすればいいですか?</span>
+          <span class="faq__toggle" aria-hidden="true"></span>
+        </button>
+        <div class="faq__a">
+          <div class="faq__a-inner">
+            <span class="faq__a-mark">A.</span>
+            <p class="faq__a-text">
+              参加費用は一切かかりません。献金は感謝の表れであり、強制ではなく金額の決まりもありません。ご用意がなければ、そのままで問題ございません。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__q">
+          <span class="faq__q-mark">Q.</span>
+          <span class="faq__q-text">どんな服装で行けばいいですか?</span>
+          <span class="faq__toggle" aria-hidden="true"></span>
+        </button>
+        <div class="faq__a">
+          <div class="faq__a-inner">
+            <span class="faq__a-mark">A.</span>
+            <p class="faq__a-text">
+              服装に決まりはありません。普段着でお越しください。楽な、あなたらしい姿でどうぞ。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__q">
+          <span class="faq__q-mark">Q.</span>
+          <span class="faq__q-text">持ち物は必要ですか?</span>
+          <span class="faq__toggle" aria-hidden="true"></span>
+        </button>
+        <div class="faq__a">
+          <div class="faq__a-inner">
+            <span class="faq__a-mark">A.</span>
+            <p class="faq__a-text">
+              手ぶらでどうぞ。聖書（新共同訳）や讃美歌（1954年版、讃美歌21）は貸し出しいたします。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__q">
+          <span class="faq__q-mark">Q.</span>
+          <span class="faq__q-text">讃美歌を知らないので歌えません。</span>
+          <span class="faq__toggle" aria-hidden="true"></span>
+        </button>
+        <div class="faq__a">
+          <div class="faq__a-inner">
+            <span class="faq__a-mark">A.</span>
+            <p class="faq__a-text">
+              心を合わせていただければ、歌わなくても大丈夫です。周りの方の声に耳を傾けるだけでも、それは十分な礼拝の時間です。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__q">
+          <span class="faq__q-mark">Q.</span>
+          <span class="faq__q-text">小さい子供を連れて行っても大丈夫ですか?</span>
+          <span class="faq__toggle" aria-hidden="true"></span>
+        </button>
+        <div class="faq__a">
+          <div class="faq__a-inner">
+            <span class="faq__a-mark">A.</span>
+            <p class="faq__a-text">
+              はい、もちろんです。礼拝堂後方の畳の部屋でも、一緒に礼拝することができます。静かにできなくても大丈夫、ご安心ください。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__q">
+          <span class="faq__q-mark">Q.</span>
+          <span class="faq__q-text">駐車場はありますか?</span>
+          <span class="faq__toggle" aria-hidden="true"></span>
+        </button>
+        <div class="faq__a">
+          <div class="faq__a-inner">
+            <span class="faq__a-mark">A.</span>
+            <p class="faq__a-text">
+              はい、ございます。入り口横または園庭に駐車していただけます。お車でどうぞお越しください。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__q">
+          <span class="faq__q-mark">Q.</span>
+          <span class="faq__q-text">しつこい勧誘はありませんか?</span>
+          <span class="faq__toggle" aria-hidden="true"></span>
+        </button>
+        <div class="faq__a">
+          <div class="faq__a-inner">
+            <span class="faq__a-mark">A.</span>
+            <p class="faq__a-text">
+              信仰を押し付けるような勧誘は一切行いません。どうぞ安心して、ご自分のペースでお越しください。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__q">
+          <span class="faq__q-mark">Q.</span>
+          <span class="faq__q-text">牧師先生とお話はできますか?</span>
+          <span class="faq__toggle" aria-hidden="true"></span>
+        </button>
+        <div class="faq__a">
+          <div class="faq__a-inner">
+            <span class="faq__a-mark">A.</span>
+            <p class="faq__a-text">
+              はい、ご相談がある方には個別にお時間を設けます。お気軽にお声がけください。
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================================================
+     INSTAGRAM
+================================================ -->
+<section class="instagram" id="instagram">
+  <div class="section">
+    <div class="section__header reveal">
+      <span class="section__eyebrow">Instagram</span>
+      <h2 class="section__title">日々の信仰のともしび</h2>
+      <p class="section__lead">
+        日曜日の礼拝や、教会の日常をInstagramでお届けしています。<br>
+        どうぞお気軽にフォローしてください。
+      </p>
+    </div>
+
+    <div class="insta-grid reveal" id="insta-grid">
+      <!-- ※ プレースホルダーセル。後日 Instagram API / 埋め込みで差し替え可能 -->
+      <a class="insta-cell" data-idx="01" href="#" target="_blank" rel="noopener"><div class="insta-cell__inner"><span>Post 01</span></div></a>
+      <a class="insta-cell" data-idx="02" href="#" target="_blank" rel="noopener"><div class="insta-cell__inner"><span>Post 02</span></div></a>
+      <a class="insta-cell" data-idx="03" href="#" target="_blank" rel="noopener"><div class="insta-cell__inner"><span>Post 03</span></div></a>
+      <a class="insta-cell" data-idx="04" href="#" target="_blank" rel="noopener"><div class="insta-cell__inner"><span>Post 04</span></div></a>
+      <a class="insta-cell" data-idx="05" href="#" target="_blank" rel="noopener"><div class="insta-cell__inner"><span>Post 05</span></div></a>
+      <a class="insta-cell" data-idx="06" href="#" target="_blank" rel="noopener"><div class="insta-cell__inner"><span>Post 06</span></div></a>
+    </div>
+
+    <div class="cta-wrap reveal">
+      <a href="#" class="btn insta-btn" id="insta-follow" target="_blank" rel="noopener">
+        <span class="insta-btn__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"/>
+          </svg>
+        </span>
+        Instagram を見る
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================
+     ACCESS
+================================================ -->
+<section class="access" id="access">
+  <div class="section">
+    <div class="section__header reveal">
+      <span class="section__eyebrow">Access &amp; Contact</span>
+      <h2 class="section__title">アクセス・連絡先</h2>
+    </div>
+
+    <div class="access-grid">
+      <div class="access__info reveal">
+        <dl>
+          <dt>団体名</dt>
+          <dd>日本キリスト教団 須崎教会</dd>
+
+          <dt>住所</dt>
+          <dd>〒785-0005<br>高知県須崎市東古市町1番8号</dd>
+
+          <dt>電話</dt>
+          <dd><a href="tel:0889-42-0393">0889-42-0393</a></dd>
+
+          <dt>FAX</dt>
+          <dd>0889-42-0367</dd>
+
+          <dt>メール</dt>
+          <dd><a href="/cdn-cgi/l/email-protection#cebdbbbdafa5a7e3ada6bbbcada68ea3a7a0a1bde0a1ada0e0a0abe0a4be"><span class="__cf_email__" data-cfemail="7c0f090f1d1715511f14090e1f143c111512130f52131f1252121952160c">[email&#160;protected]</span></a></dd>
+        </dl>
+
+        <div class="access__transport">
+          <div class="access__transport-title">By Transportation</div>
+          <ul>
+            <li>JR土讃線「須崎駅」より徒歩8分</li>
+            <li>高知交通バス「須崎局前」より徒歩1分</li>
+            <li>お車：須崎中央インターより3分（駐車場あり）</li>
+          </ul>
+        </div>
+
+        <div class="access__pastor">
+          <div class="access__pastor-photo"></div>
+          <div>
+            <div class="access__pastor-label">Pastor</div>
+            <div class="access__pastor-name">
+              秦 貴詞
+              <span class="reading">はた たかふみ</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="access__map reveal">
+        <iframe
+          src="https://www.google.com/maps?q=%E9%AB%98%E7%9F%A5%E7%9C%8C%E9%A0%88%E5%B4%8E%E5%B8%82%E6%9D%B1%E5%8F%A4%E5%B8%82%E7%94%BA1%E7%95%AA8%E5%8F%B7&output=embed"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="須崎教会 地図"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================
+     FOOTER
+================================================ -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div>
+      <div class="footer__brand-en">Susaki Church</div>
+      <div class="footer__brand-jp">日本キリスト教団 須崎教会</div>
+      <p class="footer__message">
+        教会の扉は、いつでも誰にでも開かれています。<br>
+        あなたのお越しを、心よりお待ちしております。
+      </p>
+    </div>
+    <div class="footer__col">
+      <h4>Contents</h4>
+      <ul>
+        <li><a href="#welcome">ようこそ</a></li>
+        <li><a href="#meetings">集会案内</a></li>
+        <li><a href="#faq">はじめての方へ</a></li>
+        <li><a href="#instagram">Instagram</a></li>
+        <li><a href="#access">アクセス</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h4>Contact</h4>
+      <ul>
+        <li>〒785-0005</li>
+        <li>高知県須崎市東古市町1番8号</li>
+        <li>TEL 0889-42-0393</li>
+        <li>FAX 0889-42-0367</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <span>&copy; 2026 Susaki Church &mdash; Japan Christian Church</span>
+    <span>The doors are always open to everyone.</span>
+  </div>
+</footer>
+
+<!-- ================================================
+     TWEAKS PANEL (ヒーロー聊句の微調整)
+================================================ -->
+<div class="tweaks" id="tweaks" hidden>
+  <div class="tweaks__head">
+    <div>
+      <div class="tweaks__title">Tweaks</div>
+      <div class="tweaks__sub">ヒーロー御言葉の調整</div>
+    </div>
+    <button class="tweaks__close" id="tweaks-close" aria-label="閉じる">×</button>
+  </div>
+  <div class="tweaks__body">
+    <div class="tweak-row">
+      <label class="tweak-row__label">文字サイズ（PC）<span class="tweak-row__val" id="val-size">1.4rem</span></label>
+      <input type="range" min="0.9" max="2.4" step="0.05" value="1.4" id="tw-size" class="tweak-slider">
+    </div>
+    <div class="tweak-row">
+      <label class="tweak-row__label">文字サイズ（スマホ）<span class="tweak-row__val" id="val-size-sp">1rem</span></label>
+      <input type="range" min="0.85" max="1.4" step="0.05" value="1" id="tw-size-sp" class="tweak-slider">
+    </div>
+    <div class="tweak-row">
+      <label class="tweak-row__label">字間（tracking）<span class="tweak-row__val" id="val-track">0.18em</span></label>
+      <input type="range" min="0" max="0.35" step="0.01" value="0.18" id="tw-track" class="tweak-slider">
+    </div>
+    <div class="tweak-row">
+      <label class="tweak-row__label">行間（leading）<span class="tweak-row__val" id="val-lead">2.4</span></label>
+      <input type="range" min="1.6" max="3" step="0.1" value="2.4" id="tw-lead" class="tweak-slider">
+    </div>
+    <div class="tweak-row">
+      <label class="tweak-row__label">行長（最大幅）<span class="tweak-row__val" id="val-width">44rem</span></label>
+      <input type="range" min="22" max="64" step="1" value="44" id="tw-width" class="tweak-slider">
+    </div>
+    <button class="tweak-reset" id="tw-reset">初期値に戻す</button>
+  </div>
+</div>
+
+<style>
+/* Tweaks panel */
+.tweaks {
+  position: fixed;
+  right: 1.5rem; bottom: 1.5rem;
+  z-index: 200;
+  width: 320px;
+  background: oklch(99% 0.005 75 / 0.96);
+  backdrop-filter: blur(14px) saturate(1.1);
+  -webkit-backdrop-filter: blur(14px) saturate(1.1);
+  border: 1px solid var(--ink-hairline);
+  box-shadow: 0 20px 60px oklch(30% 0.03 60 / 0.15);
+  font-family: var(--font-jp-serif);
+  color: var(--ink-primary);
+}
+.tweaks[hidden] { display: none; }
+.tweaks__head {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  padding: 1.1rem 1.25rem 0.9rem;
+  border-bottom: 1px solid var(--ink-hairline);
+}
+.tweaks__title {
+  font-family: var(--font-en-serif);
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--wood-deep);
+  letter-spacing: 0.05em;
+}
+.tweaks__sub {
+  font-size: 0.72rem;
+  color: var(--ink-muted);
+  letter-spacing: 0.1em;
+  margin-top: 0.2rem;
+}
+.tweaks__close {
+  width: 28px; height: 28px;
+  font-size: 1.4rem;
+  color: var(--ink-muted);
+  transition: color var(--dur-fast) var(--ease-linger),
+              transform var(--dur-fast) var(--ease-linger);
+}
+.tweaks__close:hover { color: var(--wood-deep); transform: rotate(90deg); }
+.tweaks__body {
+  padding: 1rem 1.25rem 1.25rem;
+}
+.tweak-row { margin-bottom: 1.1rem; }
+.tweak-row__label {
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-size: 0.78rem;
+  color: var(--ink-secondary);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+}
+.tweak-row__val {
+  font-family: var(--font-en-serif);
+  font-style: italic;
+  color: var(--gold);
+  font-size: 0.9rem;
+}
+.tweak-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 2px;
+  background: var(--ink-hairline);
+  outline: none;
+}
+.tweak-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: var(--bg-base);
+  border: 1.5px solid var(--gold);
+  cursor: pointer;
+  box-shadow: 0 0 0 4px oklch(70% 0.11 78 / 0.12);
+  transition: transform var(--dur-fast) var(--ease-linger);
+}
+.tweak-slider::-webkit-slider-thumb:hover { transform: scale(1.15); }
+.tweak-slider::-moz-range-thumb {
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: var(--bg-base);
+  border: 1.5px solid var(--gold);
+  cursor: pointer;
+}
+.tweak-reset {
+  margin-top: 0.5rem;
+  width: 100%;
+  padding: 0.7rem;
+  font-family: var(--font-jp-serif);
+  font-size: 0.82rem;
+  letter-spacing: 0.15em;
+  color: var(--ink-secondary);
+  border: 1px solid var(--ink-hairline);
+  transition: all var(--dur-med) var(--ease-linger);
+}
+.tweak-reset:hover {
+  border-color: var(--gold);
+  color: var(--wood-deep);
+}
+@media (max-width: 767px) {
+  .tweaks { right: 0.75rem; bottom: 0.75rem; width: calc(100% - 1.5rem); max-width: 320px; }
+}
+</style>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+/* =========================================================
+   Tweaks Panel — protocol handshake + live edit
+   ========================================================= */
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "verseSize": 1.4,
+  "verseSizeSp": 1.0,
+  "verseTracking": 0.18,
+  "verseLeading": 2.4,
+  "verseWidth": 44
+}/*EDITMODE-END*/;
+
+const tweaksEl = document.getElementById('tweaks');
+const tweakControls = {
+  size:   { el: document.getElementById('tw-size'),    val: document.getElementById('val-size'),    key: 'verseSize',     unit: 'rem', cssVar: '--verse-size',     format: v => v.toFixed(2) + 'rem' },
+  sizeSp: { el: document.getElementById('tw-size-sp'), val: document.getElementById('val-size-sp'), key: 'verseSizeSp',   unit: 'rem', cssVar: '--verse-size-sp',  format: v => v.toFixed(2) + 'rem' },
+  track:  { el: document.getElementById('tw-track'),   val: document.getElementById('val-track'),   key: 'verseTracking', unit: 'em',  cssVar: '--verse-tracking', format: v => v.toFixed(2) + 'em' },
+  lead:   { el: document.getElementById('tw-lead'),    val: document.getElementById('val-lead'),    key: 'verseLeading',  unit: '',    cssVar: '--verse-leading',  format: v => v.toFixed(1) },
+  width:  { el: document.getElementById('tw-width'),   val: document.getElementById('val-width'),   key: 'verseWidth',    unit: 'rem', cssVar: '--verse-width',    format: v => v.toFixed(0) + 'rem' }
+};
+
+function applyTweak(key, value) {
+  const ctrl = Object.values(tweakControls).find(c => c.key === key);
+  if (!ctrl) return;
+  const cssValue = ctrl.unit ? value + ctrl.unit : value;
+  document.documentElement.style.setProperty(ctrl.cssVar, cssValue);
+  ctrl.el.value = value;
+  ctrl.val.textContent = ctrl.format(parseFloat(value));
+}
+
+function applyAllTweaks(state) {
+  Object.entries(state).forEach(([k, v]) => applyTweak(k, v));
+}
+
+// Initialize
+applyAllTweaks(TWEAK_DEFAULTS);
+
+// Wire sliders
+Object.values(tweakControls).forEach(ctrl => {
+  ctrl.el.addEventListener('input', () => {
+    const val = parseFloat(ctrl.el.value);
+    applyTweak(ctrl.key, val);
+    try {
+      window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { [ctrl.key]: val } }, '*');
+    } catch (e) {}
+  });
+});
+
+// Reset
+document.getElementById('tw-reset').addEventListener('click', () => {
+  applyAllTweaks(TWEAK_DEFAULTS);
+  try {
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits: TWEAK_DEFAULTS }, '*');
+  } catch (e) {}
+});
+
+// Close button
+document.getElementById('tweaks-close').addEventListener('click', () => {
+  tweaksEl.hidden = true;
+});
+
+// Edit-mode protocol
+window.addEventListener('message', (e) => {
+  const d = e.data;
+  if (!d || typeof d !== 'object') return;
+  if (d.type === '__activate_edit_mode') tweaksEl.hidden = false;
+  else if (d.type === '__deactivate_edit_mode') tweaksEl.hidden = true;
+});
+
+// Announce availability (AFTER listener is registered)
+try {
+  window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+} catch (e) {}
+</script>
+
+<script>
+/* =========================================================
+   Nav — scroll state + mobile menu
+   ========================================================= */
+const nav = document.getElementById('nav');
+const hamburger = document.getElementById('hamburger');
+
+const onScroll = () => {
+  if (window.scrollY > 40) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+};
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+hamburger.addEventListener('click', () => {
+  nav.classList.toggle('menu-open');
+});
+document.querySelectorAll('.nav__link').forEach(a => {
+  a.addEventListener('click', () => nav.classList.remove('menu-open'));
+});
+
+/* =========================================================
+   Reveal on scroll
+   ========================================================= */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+/* =========================================================
+   Button — pointer-based glow
+   ========================================================= */
+document.querySelectorAll('.btn').forEach(btn => {
+  btn.addEventListener('mousemove', (e) => {
+    const r = btn.getBoundingClientRect();
+    btn.style.setProperty('--x', ((e.clientX - r.left) / r.width * 100) + '%');
+    btn.style.setProperty('--y', ((e.clientY - r.top) / r.height * 100) + '%');
+  });
+});
+
+/* =========================================================
+   Meetings tabs
+   ========================================================= */
+const tabs = document.querySelectorAll('.meetings__tab');
+const panels = document.querySelectorAll('.meeting-panel');
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.panel;
+    tabs.forEach(t => t.classList.toggle('active', t === tab));
+    panels.forEach(p => p.classList.toggle('active', p.dataset.panel === target));
+    // Reset timeline if switching away then back
+    if (target === 'worship') updateTimeline();
+  });
+});
+
+/* =========================================================
+   FAQ accordion
+   ========================================================= */
+document.querySelectorAll('.faq__item').forEach(item => {
+  const q = item.querySelector('.faq__q');
+  q.addEventListener('click', () => {
+    item.classList.toggle('is-open');
+  });
+});
+
+/* =========================================================
+   Worship Timeline — scroll-linked highlight
+   ========================================================= */
+const timeline = document.getElementById('timeline');
+const timelineSteps = timeline ? timeline.querySelectorAll('.timeline__step') : [];
+const timelineProgress = document.getElementById('timeline-progress');
+
+function updateTimeline() {
+  if (!timeline || !timelineSteps.length) return;
+
+  const viewportCenter = window.innerHeight * 0.4; // Highlight line ~40% down viewport
+  const rect = timeline.getBoundingClientRect();
+
+  // Progress line height calculation
+  const railStart = rect.top + 32; // top: 2rem
+  const railEnd = rect.bottom - 64; // bottom: 4rem
+  const railHeight = railEnd - railStart;
+  let progress = (viewportCenter - railStart) / railHeight;
+  progress = Math.max(0, Math.min(1, progress));
+  if (timelineProgress) {
+    timelineProgress.style.height = (progress * railHeight) + 'px';
+  }
+
+  // Find active step (closest to viewport center)
+  let activeIndex = -1;
+  let minDist = Infinity;
+  timelineSteps.forEach((step, i) => {
+    const r = step.getBoundingClientRect();
+    const center = r.top + r.height / 2;
+    const dist = Math.abs(center - viewportCenter);
+    if (dist < minDist && r.top < window.innerHeight && r.bottom > 0) {
+      minDist = dist;
+      activeIndex = i;
+    }
+  });
+
+  timelineSteps.forEach((step, i) => {
+    step.classList.remove('is-active', 'is-passed');
+    if (i < activeIndex) step.classList.add('is-passed');
+    else if (i === activeIndex) step.classList.add('is-active');
+  });
+}
+
+if (timeline) {
+  window.addEventListener('scroll', updateTimeline, { passive: true });
+  window.addEventListener('resize', updateTimeline);
+  updateTimeline();
+}
+</script>
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
