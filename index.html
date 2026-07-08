@@ -1011,6 +1011,37 @@ section { position: relative; }
   box-shadow: 0 12px 32px oklch(50% 0.05 60 / 0.18);
 }
 
+.insta-cell {
+  position: relative;  /* ← これも追加必要！ */
+  display: block;
+  aspect-ratio: 1 / 1;
+  background-size: cover;
+  background-position: center;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform 0.3s var(--ease-linger), box-shadow 0.3s var(--ease-linger);
+}
+
+.insta-cell__caption {
+  position: absolute;
+  inset: 0;
+  background: oklch(20% 0.015 60 / 0.65);
+  color: oklch(98% 0.008 75);
+  font-family: var(--font-jp-serif);
+  font-size: 0.82rem;
+  line-height: 1.7;
+  letter-spacing: 0.08em;
+  padding: 1.25rem;
+  display: flex;
+  align-items: flex-end;
+  opacity: 0;
+  transition: opacity 0.35s var(--ease-linger);
+}
+
+.insta-cell:hover .insta-cell__caption {
+  opacity: 1;
+}
+
 
 .insta-cell__inner {
   position: absolute; inset: 0;
