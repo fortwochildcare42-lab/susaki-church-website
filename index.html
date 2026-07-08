@@ -997,16 +997,20 @@ section { position: relative; }
   margin: 0 auto;
 }
 .insta-cell {
+  display: block;
   aspect-ratio: 1 / 1;
-  background: var(--bg-sub);
-  position: relative;
+  background-size: cover;
+  background-position: center;
+  border-radius: 4px;
   overflow: hidden;
-  transition: transform var(--dur-med) var(--ease-linger),
-              box-shadow var(--dur-med) var(--ease-linger);
+  transition: transform 0.3s var(--ease-linger), box-shadow 0.3s var(--ease-linger);
 }
-.insta-cell::before {
-  display: none;
+
+.insta-cell:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px oklch(50% 0.05 60 / 0.18);
 }
+
 
 .insta-cell__inner {
   position: absolute; inset: 0;
@@ -2483,12 +2487,22 @@ async function loadInstagram() {
       a.style.backgroundImage = `url(${url})`;
       a.style.backgroundSize = 'cover';
       a.style.backgroundPosition = 'center';
+
+      // キャプション追加
+      if (post.caption) {
+        const overlay = document.createElement('div');
+        overlay.className = 'insta-cell__caption';
+        overlay.textContent = post.caption.slice(0, 60) + (post.caption.length > 60 ? '…' : '');
+        a.appendChild(overlay);
+      }
+
       grid.appendChild(a);
     });
   } catch (e) {
     console.error('Instagram load error:', e);
   }
 }
+
 loadInstagram();
 </script>
 </body>
