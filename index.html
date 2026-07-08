@@ -2010,14 +2010,11 @@ section { position: relative; }
       </p>
     </div>
 
-    <div class="insta-grid reveal" id="insta-grid">
-      <!-- ※ プレースホルダーセル。後日 Instagram API / 埋め込みで差し替え可能 -->
-      <a class="insta-cell" data-idx="01" href="#" target="_blank" rel="noopener"><div class="insta-cell__inner"><span>Post 01</span></div></a>
-      <a class="insta-cell" data-idx="02" href="#" target="_blank" rel="noopener"><div class="insta-cell__inner"><span>Post 02</span></div></a>
-      <a class="insta-cell" data-idx="03" href="#" target="_blank" rel="noopener"><div class="insta-cell__inner"><span>Post 03</span></div></a>
-      <a class="insta-cell" data-idx="04" href="#" target="_blank" rel="noopener"><div class="insta-cell__inner"><span>Post 04</span></div></a>
-      <a class="insta-cell" data-idx="05" href="#" target="_blank" rel="noopener"><div class="insta-cell__inner"><span>Post 05</span></div></a>
-      <a class="insta-cell" data-idx="06" href="#" target="_blank" rel="noopener"><div class="insta-cell__inner"><span>Post 06</span></div></a>
+  <div class="insta-grid reveal" id="insta-grid">
+  <!-- Instagram投稿がここに動的に挿入されます -->
+</div>
+
+ta-cell" data-idx="06" href="#" target="_blank" rel="noopener"><div class="insta-cell__inner"><span>Post 06</span></div></a>
     </div>
 
     <div class="cta-wrap reveal">
@@ -2475,5 +2472,32 @@ if (timeline) {
 </script>
 
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+<script>
+async function loadInstagram() {
+  try {
+    const res = await fetch('/functions/instagram');
+    const data = await res.json();
+    const grid = document.getElementById('insta-grid');
+    if (!data.data) return;
+    data.data.forEach((post) => {
+      const url = post.media_type === 'VIDEO'
+        ? post.thumbnail_url
+        : post.media_url;
+      const a = document.createElement('a');
+      a.className = 'insta-cell';
+      a.href = post.permalink;
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.style.backgroundImage = `url(${url})`;
+      a.style.backgroundSize = 'cover';
+      a.style.backgroundPosition = 'center';
+      grid.appendChild(a);
+    });
+  } catch (e) {
+    console.error('Instagram load error:', e);
+  }
+}
+loadInstagram();
+</script>
 </body>
 </html>
