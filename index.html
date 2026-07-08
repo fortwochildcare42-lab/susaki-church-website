@@ -2467,7 +2467,7 @@ if (timeline) {
 <script>
 async function loadInstagram() {
   try {
-    const res = await fetch('/functions/instagram');
+    const res = await fetch('/api/instagram');
     const data = await res.json();
     const grid = document.getElementById('insta-grid');
     if (!data.data) return;
