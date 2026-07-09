@@ -7,9 +7,63 @@
 <meta name="description" content="高知県須崎市のプロテスタント教会。日本キリスト教団 須崎教会。毎週日曜10:15より主日礼拝。初めての方も、どうぞお気軽にお立ち寄りください。">
 <meta name="keywords" content="須崎教会, 高知県 須崎市 教会, プロテスタント 礼拝, キリスト教">
 
+<link rel="canonical" href="https://susaki-church-website.pages.dev/">
+
+<!-- SNSでシェアされた時の表示（OGP） -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="日本キリスト教団 須崎教会">
+<meta property="og:title" content="日本キリスト教団 須崎教会 ｜ 教会の扉は、いつでも誰にでも開かれています">
+<meta property="og:description" content="高知県須崎市のプロテスタント教会。毎週日曜10:15より主日礼拝。初めての方も、どうぞお気軽にお立ち寄りください。">
+<meta property="og:url" content="https://susaki-church-website.pages.dev/">
+<meta property="og:image" content="https://susaki-church-website.pages.dev/hero.jpg">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="日本キリスト教団 須崎教会">
+<meta name="twitter:description" content="高知県須崎市のプロテスタント教会。毎週日曜10:15より主日礼拝。">
+<meta name="twitter:image" content="https://susaki-church-website.pages.dev/hero.jpg">
+
+<meta name="theme-color" content="#f2ede4">
+
+<!-- ファビコン（木の十字架をイメージしたシンプルなSVG） -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23f2ede4'/%3E%3Crect x='14.5' y='6' width='3' height='20' rx='1' fill='%23705a3c'/%3E%3Crect x='7' y='12' width='18' height='3' rx='1' fill='%23705a3c'/%3E%3C/svg%3E">
+
+<!-- 検索結果でのリッチ表示用の構造化データ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Church",
+  "name": "日本キリスト教団 須崎教会",
+  "alternateName": "須崎教会",
+  "url": "https://susaki-church-website.pages.dev/",
+  "telephone": "+81-889-42-0393",
+  "faxNumber": "+81-889-42-0367",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "東古市町1番8号",
+    "addressLocality": "須崎市",
+    "addressRegion": "高知県",
+    "postalCode": "785-0005",
+    "addressCountry": "JP"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Sunday",
+      "opens": "10:15",
+      "closes": "11:30",
+      "description": "主日礼拝"
+    }
+  ],
+  "founder": {
+    "@type": "Person",
+    "name": "秦 貴詞"
+  }
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 
 <style>
 /* =========================================================
@@ -327,6 +381,13 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 
 @keyframes heroFadeIn {
   to { opacity: 1; transform: translateY(0); }
+}
+
+.hero__cta {
+  margin-top: 2.5rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroFadeIn 1.6s var(--ease-linger) 1.4s forwards;
 }
 
 .hero__verse-ref {
@@ -996,6 +1057,15 @@ section { position: relative; }
   max-width: var(--max-w);
   margin: 0 auto;
 }
+
+.insta-fallback {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 3rem 1rem;
+  font-size: 0.95rem;
+  color: var(--ink-muted);
+  letter-spacing: 0.06em;
+}
 .insta-cell {
   display: block;
   aspect-ratio: 1 / 1;
@@ -1164,23 +1234,23 @@ section { position: relative; }
 }
 .access__pastor-photo {
   width: 88px; height: 88px;
-  background-image: url("pastor.jpg");
-  background-size: cover;
-  background-position: center;
   border-radius: 50%;
-  background-color: var(--bg-deep);
+  background: linear-gradient(135deg, var(--bg-deep), var(--wood));
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
   overflow: hidden;
 }
-.access__pastor-photo::after {
-  content: "pastor.jpg";
-  position: absolute; inset: 0;
-  font-family: monospace; font-size: 0.6rem;
-  color: var(--ink-muted);
-  display: flex; align-items: center; justify-content: center;
-  background: repeating-linear-gradient(45deg,
-    var(--bg-deep) 0 6px, var(--bg-sub) 6px 7px);
-  z-index: -1;
+/* 写真が用意でき次第、上の background を消して
+   background-image: url("pastor.jpg"); background-size: cover; background-position: center;
+   に戻し、下の.access__pastor-photo__initialごとdivの中身を空にしてください */
+.access__pastor-photo__initial {
+  font-family: var(--font-jp-serif);
+  font-weight: 500;
+  font-size: 1.8rem;
+  color: var(--bg-base);
+  letter-spacing: 0;
 }
 .access__pastor-label {
   font-family: var(--font-en-serif);
@@ -1389,7 +1459,7 @@ section { position: relative; }
      HERO
 ================================================ -->
 <header class="hero" id="top">
-  <div class="hero__image"></div>
+  <div class="hero__image" role="img" aria-label="須崎教会の礼拝堂と、朝の光が差し込む様子"></div>
   <div class="hero__rays"></div>
   <div class="hero__inner">
     <p class="hero__eyebrow">Japan Christian Church &mdash; Susaki</p>
@@ -1416,6 +1486,9 @@ section { position: relative; }
         <span class="hero__meta-value"><span class="time">10:30</span>祈祷会（木）</span>
       </div>
     </div>
+    <div class="hero__cta">
+      <a href="#faq" class="btn">はじめての方へ</a>
+    </div>
   </div>
   <div class="hero__scroll">
     <span>Scroll</span>
@@ -1433,11 +1506,11 @@ section { position: relative; }
     </div>
 
     <div class="welcome-grid">
-      <div class="welcome__image-frame reveal"></div>
+      <div class="welcome__image-frame reveal" role="img" aria-label="須崎教会の木造の礼拝堂内観"></div>
       <div class="welcome__body reveal">
         <h3>
           須崎教会は、<br>
-          日本基督キリスト教団に所属する<br>
+          日本キリスト教団に所属する<br>
           <span class="gold">プロテスタント教会</span>です。
         </h3>
         <p>
@@ -2098,7 +2171,9 @@ section { position: relative; }
         </div>
 
         <div class="access__pastor">
-          <div class="access__pastor-photo"></div>
+          <div class="access__pastor-photo" role="img" aria-label="牧師 秦貴詞先生の写真（準備中）">
+            <span class="access__pastor-photo__initial">秦</span>
+          </div>
           <div>
             <div class="access__pastor-label">Pastor</div>
             <div class="access__pastor-name">
@@ -2160,222 +2235,6 @@ section { position: relative; }
   </div>
 </footer>
 
-<!-- ================================================
-     TWEAKS PANEL (ヒーロー聊句の微調整)
-================================================ -->
-<div class="tweaks" id="tweaks" hidden>
-  <div class="tweaks__head">
-    <div>
-      <div class="tweaks__title">Tweaks</div>
-      <div class="tweaks__sub">ヒーロー御言葉の調整</div>
-    </div>
-    <button class="tweaks__close" id="tweaks-close" aria-label="閉じる">×</button>
-  </div>
-  <div class="tweaks__body">
-    <div class="tweak-row">
-      <label class="tweak-row__label">文字サイズ（PC）<span class="tweak-row__val" id="val-size">1.4rem</span></label>
-      <input type="range" min="0.9" max="2.4" step="0.05" value="1.4" id="tw-size" class="tweak-slider">
-    </div>
-    <div class="tweak-row">
-      <label class="tweak-row__label">文字サイズ（スマホ）<span class="tweak-row__val" id="val-size-sp">1rem</span></label>
-      <input type="range" min="0.85" max="1.4" step="0.05" value="1" id="tw-size-sp" class="tweak-slider">
-    </div>
-    <div class="tweak-row">
-      <label class="tweak-row__label">字間（tracking）<span class="tweak-row__val" id="val-track">0.18em</span></label>
-      <input type="range" min="0" max="0.35" step="0.01" value="0.18" id="tw-track" class="tweak-slider">
-    </div>
-    <div class="tweak-row">
-      <label class="tweak-row__label">行間（leading）<span class="tweak-row__val" id="val-lead">2.4</span></label>
-      <input type="range" min="1.6" max="3" step="0.1" value="2.4" id="tw-lead" class="tweak-slider">
-    </div>
-    <div class="tweak-row">
-      <label class="tweak-row__label">行長（最大幅）<span class="tweak-row__val" id="val-width">44rem</span></label>
-      <input type="range" min="22" max="64" step="1" value="44" id="tw-width" class="tweak-slider">
-    </div>
-    <button class="tweak-reset" id="tw-reset">初期値に戻す</button>
-  </div>
-</div>
-
-<style>
-/* Tweaks panel */
-.tweaks {
-  position: fixed;
-  right: 1.5rem; bottom: 1.5rem;
-  z-index: 200;
-  width: 320px;
-  background: oklch(99% 0.005 75 / 0.96);
-  backdrop-filter: blur(14px) saturate(1.1);
-  -webkit-backdrop-filter: blur(14px) saturate(1.1);
-  border: 1px solid var(--ink-hairline);
-  box-shadow: 0 20px 60px oklch(30% 0.03 60 / 0.15);
-  font-family: var(--font-jp-serif);
-  color: var(--ink-primary);
-}
-.tweaks[hidden] { display: none; }
-.tweaks__head {
-  display: flex; align-items: flex-start; justify-content: space-between;
-  padding: 1.1rem 1.25rem 0.9rem;
-  border-bottom: 1px solid var(--ink-hairline);
-}
-.tweaks__title {
-  font-family: var(--font-en-serif);
-  font-style: italic;
-  font-size: 1.2rem;
-  color: var(--wood-deep);
-  letter-spacing: 0.05em;
-}
-.tweaks__sub {
-  font-size: 0.72rem;
-  color: var(--ink-muted);
-  letter-spacing: 0.1em;
-  margin-top: 0.2rem;
-}
-.tweaks__close {
-  width: 28px; height: 28px;
-  font-size: 1.4rem;
-  color: var(--ink-muted);
-  transition: color var(--dur-fast) var(--ease-linger),
-              transform var(--dur-fast) var(--ease-linger);
-}
-.tweaks__close:hover { color: var(--wood-deep); transform: rotate(90deg); }
-.tweaks__body {
-  padding: 1rem 1.25rem 1.25rem;
-}
-.tweak-row { margin-bottom: 1.1rem; }
-.tweak-row__label {
-  display: flex; justify-content: space-between; align-items: baseline;
-  font-size: 0.78rem;
-  color: var(--ink-secondary);
-  letter-spacing: 0.08em;
-  margin-bottom: 0.5rem;
-}
-.tweak-row__val {
-  font-family: var(--font-en-serif);
-  font-style: italic;
-  color: var(--gold);
-  font-size: 0.9rem;
-}
-.tweak-slider {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 100%;
-  height: 2px;
-  background: var(--ink-hairline);
-  outline: none;
-}
-.tweak-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 14px; height: 14px;
-  border-radius: 50%;
-  background: var(--bg-base);
-  border: 1.5px solid var(--gold);
-  cursor: pointer;
-  box-shadow: 0 0 0 4px oklch(70% 0.11 78 / 0.12);
-  transition: transform var(--dur-fast) var(--ease-linger);
-}
-.tweak-slider::-webkit-slider-thumb:hover { transform: scale(1.15); }
-.tweak-slider::-moz-range-thumb {
-  width: 14px; height: 14px;
-  border-radius: 50%;
-  background: var(--bg-base);
-  border: 1.5px solid var(--gold);
-  cursor: pointer;
-}
-.tweak-reset {
-  margin-top: 0.5rem;
-  width: 100%;
-  padding: 0.7rem;
-  font-family: var(--font-jp-serif);
-  font-size: 0.82rem;
-  letter-spacing: 0.15em;
-  color: var(--ink-secondary);
-  border: 1px solid var(--ink-hairline);
-  transition: all var(--dur-med) var(--ease-linger);
-}
-.tweak-reset:hover {
-  border-color: var(--gold);
-  color: var(--wood-deep);
-}
-@media (max-width: 767px) {
-  .tweaks { right: 0.75rem; bottom: 0.75rem; width: calc(100% - 1.5rem); max-width: 320px; }
-}
-</style>
-
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-/* =========================================================
-   Tweaks Panel — protocol handshake + live edit
-   ========================================================= */
-const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-  "verseSize": 1.4,
-  "verseSizeSp": 1.0,
-  "verseTracking": 0.18,
-  "verseLeading": 2.4,
-  "verseWidth": 44
-}/*EDITMODE-END*/;
-
-const tweaksEl = document.getElementById('tweaks');
-const tweakControls = {
-  size:   { el: document.getElementById('tw-size'),    val: document.getElementById('val-size'),    key: 'verseSize',     unit: 'rem', cssVar: '--verse-size',     format: v => v.toFixed(2) + 'rem' },
-  sizeSp: { el: document.getElementById('tw-size-sp'), val: document.getElementById('val-size-sp'), key: 'verseSizeSp',   unit: 'rem', cssVar: '--verse-size-sp',  format: v => v.toFixed(2) + 'rem' },
-  track:  { el: document.getElementById('tw-track'),   val: document.getElementById('val-track'),   key: 'verseTracking', unit: 'em',  cssVar: '--verse-tracking', format: v => v.toFixed(2) + 'em' },
-  lead:   { el: document.getElementById('tw-lead'),    val: document.getElementById('val-lead'),    key: 'verseLeading',  unit: '',    cssVar: '--verse-leading',  format: v => v.toFixed(1) },
-  width:  { el: document.getElementById('tw-width'),   val: document.getElementById('val-width'),   key: 'verseWidth',    unit: 'rem', cssVar: '--verse-width',    format: v => v.toFixed(0) + 'rem' }
-};
-
-function applyTweak(key, value) {
-  const ctrl = Object.values(tweakControls).find(c => c.key === key);
-  if (!ctrl) return;
-  const cssValue = ctrl.unit ? value + ctrl.unit : value;
-  document.documentElement.style.setProperty(ctrl.cssVar, cssValue);
-  ctrl.el.value = value;
-  ctrl.val.textContent = ctrl.format(parseFloat(value));
-}
-
-function applyAllTweaks(state) {
-  Object.entries(state).forEach(([k, v]) => applyTweak(k, v));
-}
-
-// Initialize
-applyAllTweaks(TWEAK_DEFAULTS);
-
-// Wire sliders
-Object.values(tweakControls).forEach(ctrl => {
-  ctrl.el.addEventListener('input', () => {
-    const val = parseFloat(ctrl.el.value);
-    applyTweak(ctrl.key, val);
-    try {
-      window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { [ctrl.key]: val } }, '*');
-    } catch (e) {}
-  });
-});
-
-// Reset
-document.getElementById('tw-reset').addEventListener('click', () => {
-  applyAllTweaks(TWEAK_DEFAULTS);
-  try {
-    window.parent.postMessage({ type: '__edit_mode_set_keys', edits: TWEAK_DEFAULTS }, '*');
-  } catch (e) {}
-});
-
-// Close button
-document.getElementById('tweaks-close').addEventListener('click', () => {
-  tweaksEl.hidden = true;
-});
-
-// Edit-mode protocol
-window.addEventListener('message', (e) => {
-  const d = e.data;
-  if (!d || typeof d !== 'object') return;
-  if (d.type === '__activate_edit_mode') tweaksEl.hidden = false;
-  else if (d.type === '__deactivate_edit_mode') tweaksEl.hidden = true;
-});
-
-// Announce availability (AFTER listener is registered)
-try {
-  window.parent.postMessage({ type: '__edit_mode_available' }, '*');
-} catch (e) {}
-</script>
 
 <script>
 /* =========================================================
@@ -2501,11 +2360,14 @@ if (timeline) {
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 <script>
 async function loadInstagram() {
+  const grid = document.getElementById('insta-grid');
   try {
     const res = await fetch('/api/instagram');
     const data = await res.json();
-    const grid = document.getElementById('insta-grid');
-    if (!data.data) return;
+    if (!res.ok || !data.data || !data.data.length) {
+      grid.innerHTML = '<p class="insta-fallback">最新の投稿を読み込めませんでした。下のボタンからInstagramをご覧ください。</p>';
+      return;
+    }
     data.data.forEach((post) => {
       const url = post.media_type === 'VIDEO'
         ? post.thumbnail_url
@@ -2531,6 +2393,7 @@ async function loadInstagram() {
     });
   } catch (e) {
     console.error('Instagram load error:', e);
+    grid.innerHTML = '<p class="insta-fallback">最新の投稿を読み込めませんでした。下のボタンからInstagramをご覧ください。</p>';
   }
 }
 
